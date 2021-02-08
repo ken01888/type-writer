@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    //Hide Upper Keyboard
+  //Hide Upper Keyboard
     $('#keyboard-upper-container').hide()
 
 
