@@ -1,0 +1,220 @@
+$(document).ready(function () {
+
+    
+
+    //Shift Key & Toggle
+    $(document).keydown(function (e) {
+        if (e.keyCode == 16) {
+            /*show*/ $("#keyboard-upper-container").show();
+            /*hide*/ $("#keyboard-lower-container").hide();
+        }
+    })
+    $(document).keyup(function (e) {
+        //e.key.charCodeAt unhighlights, but e.keyCode doesn't
+        let asciiLetter = e.key.charCodeAt(0)
+
+        $('#' + asciiLetter).css('background-color', '#f5f5f5')
+
+        if (e.keyCode == 16) {
+            /*hide*/$("#keyboard-upper-container").hide();
+            /*show*/$("#keyboard-lower-container").show();
+        }
+    })
+
+
+
+
+
+    let sentences =
+        ['ten ate neite ate nee enet ite ate inet ent eate',
+            'Too ato too nOt enot one totA not anot tOO aNot',
+            'oat itain oat tain nate eate tea anne inant nean',
+            'itant eate anot eat nato inate eat anot tain eat',
+            'nee ene ate ite tent tiet ent ine ene ete ene ate'];
+
+    // for ( u = 0; u < sentences.length; u++){
+    //     console.log(sentences[u].length)
+    // }
+
+    $("#sentence").append('<p>' + sentences[0] + '</p>')
+
+
+    //Key Color Change
+    // let key = $('body').find('span')
+    // $(document).keypress(function(e){
+    //     for (i=0; i<key.length; i++){
+    //     let value= key[i].id
+    //     if (e.which==value){
+    //     $('#' + value).css('background-color','yellow')
+    //     if (e.which==value){
+    //     $('#sentence').append(String.fromCharCode(value))
+    //     }}}})
+
+
+
+    let i = 0
+
+    $(document).keypress(function (e) {
+
+        let j = i++
+        let asciiLetter = e.key.charCodeAt(0)
+        let text = String.fromCharCode(asciiLetter)
+
+        if (text == sentences[0][j]) {
+            $('#yellow-block').append('<span>' + text + '</span>');
+        } else if (text !== sentences[0][j]) {
+            $("#target-letter").append('<span>' + sentences[0][j + 1] + '</span>');
+        }
+  
+
+
+        let q = $('#yellow-block > span').length
+        let w = $('#target-letter > span').length
+        let r = q + w
+        let t = sentences[0].length
+
+        // if (r == 5) {
+        //     $('#yellow-block').empty()
+        //     $('#target-letter').empty()
+        //     $('#sentence').empty()
+        //     $("#sentence").append('<p>' + sentences[1] + '</p>')  
+        // } 
+
+        // if (text == sentences[1][j]) {
+        //     $('#yellow-block').append('<span>' + text + '</span>');
+        // } else if (text !== sentences[1][j]) {
+        //     $("#target-letter").append('<span>' + sentences[0][j + 1] + '</span>');
+        // }
+        
+        
+    })
+
+
+
+
+
+    // $(document).keypress(function (e) {
+
+    //     let j = i++
+    //     let asciiLetter = e.key.charCodeAt(0)
+    //     let text = String.fromCharCode(asciiLetter)
+
+    //     if (text == sentences[1][j]) {
+    //         $('#yellow-block').append('<span>' + text + '</span>');
+    //     } else if (text !== sentences[0][j]) {
+    //         $("#target-letter").append('<span>' + sentences[1][j + 1] + '</span>');
+    //     }
+
+    //     let q = $('#yellow-block > span').length
+    //     let w = $('#target-letter > span').length
+    //     let r = q + w
+    //     let t = sentences[0].length
+
+    //     if (r == 10) {
+    //         $('#yellow-block').empty()
+    //         $('#target-letter').empty()
+    //         $('#sentence').empty()
+    //         $("#sentence").append('<p>' + sentences[2] + '</p>')
+
+    //     }
+    // })
+
+
+// if ( a == sentences[j].length-1){
+        //     $('#sentence').empty()
+        //     $('#sentence').append(sentences[j+1])
+        //     $('#yellow-block').html(sentences[j+1][j])
+        //     $('#target-letter').html(sentences[j+1][j])
+        // }
+
+    //sentence to be displayed on at a time 
+
+            // text == c && b ? $('#feedback').html('&#x2705'):$('#feedback').html('&#10060')
+
+
+})
+
+if (letterIndex==1){
+            sentenceIndex++
+
+            $('#sentence').empty()
+            $('#yellow-block').empty()
+            $('#target-letter').empty()
+            $('#sentence').html(sentences[sentenceIndex])
+            $('#yellow-block').text(sentences[sentenceIndex][letterIndex]);
+            $('#target-letter').html(sentences[sentenceIndex][letterIndex]);
+            console.log(letterIndex)
+        }
+
+        
+
+        letterIndex++
+        $('#yellow-block').text(sentences[sentenceIndex][letterIndex]);
+        $('#target-letter').html(sentences[sentenceIndex][letterIndex]);
+
+
+
+
+
+
+
+
+else if (typeof sentences[sentenceIndex] === 'undefined'  ){
+            //console.log((((new Date()-timeNow)/1000)/60)*38)
+            console.log("success")
+            $('#sentences').html('elloea')
+
+          }
+
+           if (letterIndex === sentences[4].length  ){
+         }
+
+
+return (letterIndex = 0,
+                $('#yellow-block').html(sentences[sentenceIndex][letterIndex]),
+                $('#target-letter').html(sentences[sentenceIndex][letterIndex])
+                
+            )
+
+             // if (text !== sentences[sentenceIndex][letterIndex]) {
+    //         $('#feedback').html(errorSymbol);
+    //         errorCounter++;
+    //     } else {
+    //         $('#feedback').html(correctSymbol);
+    //     }
+
+        // letterIndex++
+        // $('#yellow-block').html(sentences[sentenceIndex][letterIndex]);
+        // $('#target-letter').html(sentences[sentenceIndex][letterIndex]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

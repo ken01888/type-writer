@@ -1,0 +1,131 @@
+$(document).ready(function () {
+
+    //Hide Upper Keyboard
+    $('#keyboard-upper-container').hide()
+
+
+    //Shift Key & Toggle && Color Change
+    $(document).keydown(function (e) {
+        if (e.keyCode == 16) {
+        /*show*/ $('#keyboard-upper-container').show();
+        /*hide*/ $('#keyboard-lower-container').hide();
+        }
+
+        let asciiLetter = e.key.charCodeAt(0)
+        let j = $('#' + asciiLetter).attr('id')
+        if (asciiLetter == j) {
+            $('#' + asciiLetter).css('background-color', 'yellow')
+        }
+    })
+
+    $(document).keyup(function (e) {
+        if (e.keyCode == 16) {
+        /*hide*/ $('#keyboard-upper-container').hide();
+        /*show*/ $('#keyboard-lower-container').show();
+        }
+
+        let asciiLetter = e.key.charCodeAt(0)
+        let j = $('#' + asciiLetter).attr('id')
+        if (asciiLetter == j) {
+            $('#' + asciiLetter).css('background-color', '#f5f5f5')
+        }
+    })
+
+    //Sentence 
+
+    const sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate', ''];
+    let sentenceIndex = 0;
+    let letterIndex = 0;
+    let errorCounter = 0;
+    let timeNow = new Date()
+    let timeMinutes = timeNow.getMinutes()
+    $('#sentence').html(sentences[sentenceIndex])
+    $('#yellow-block').html(sentences[sentenceIndex][letterIndex])
+    $('#target-letter').html(sentences[sentenceIndex][letterIndex])
+
+
+    console.log(48 + 47 + 48 + 48 + 49)
+
+
+
+
+    $(document).keypress(function (e) {
+        let correctSymbol = '&#x2705'
+        let errorSymbol = '&#10060'
+        let asciiLetter = e.key.charCodeAt(0);
+        let text = String.fromCharCode(asciiLetter);
+        
+        if (letterIndex >= 48) {
+            $('#sentence').empty()
+            $('#yellow-block').empty()
+            $('#target-letter').empty()
+            sentenceIndex++
+            $('#sentence').html(sentences[sentenceIndex])
+
+            return (letterIndex = 0,
+                $('#yellow-block').html(sentences[sentenceIndex][letterIndex]).css({
+                    'position': 'absolute',
+                    'margin-top': '30px',
+                    'width': '35px',
+                    'height': '5px',
+                    'background-color': 'yellow',
+                    'margin-left': '0px'
+                }
+            )
+        )
+        } else if (sentences[sentenceIndex].length == 0) {
+            $('#feedback').html(sentences[sentenceIndex][letterIndex])
+
+        }
+
+
+        if (text !== sentences[sentenceIndex][letterIndex]) {
+            $('#feedback').html(errorSymbol);
+            errorCounter++;
+        } else {
+            $('#feedback').html(correctSymbol);
+        }
+
+
+        let stopTime = new Date()
+        let stopMinutes = stopTime.getMinutes()
+        let minutes = stopMinutes - timeMinutes
+
+
+        
+        
+        
+        
+        
+        
+        
+        if (sentences[sentenceIndex].length == 0) {
+            $('#sentence').html(errorCounter)
+            $('#feedback').empty()
+            $('#feedback').append('<button>reset</button>')
+            $('button').click(function(){location.reload()})
+            console.log(wordsPerSecond)
+
+                
+            
+        }
+
+
+
+
+
+
+
+        letterIndex++
+        $('#yellow-block').html(sentences[sentenceIndex][letterIndex]).css('margin-left','=+15');
+        $('#target-letter').html(sentences[sentenceIndex][letterIndex]);
+
+
+
+
+
+
+    })
+})
+
+
